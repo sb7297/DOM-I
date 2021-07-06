@@ -37,6 +37,50 @@ const siteContent = {
   },
 };
 
-// Example: Update the img src for the logo
-let logo = document.getElementById("logo-img");
-logo.setAttribute('src', siteContent["nav"]["img-src"])
+let navLinks = document.querySelectorAll(".container header nav a");
+
+for (let i = 0; i < 6; i++) {
+  navLinks[i].textContent = siteContent["nav"][`nav-item-${i+1}`];
+}
+
+document.querySelector('#logo-img').src = siteContent.nav["img-src"];
+
+document.querySelector('.cta .cta-text h1').textContent = siteContent.cta['h1'];
+document.querySelector('.cta .cta-text button').textContent = siteContent.cta['button'];
+document.querySelector('.cta #cta-img').src = siteContent.cta['img-src'];
+
+document.querySelectorAll('.main-content .top-content .text-content h4')[0].textContent = siteContent["main-content"]["features-h4"];
+document.querySelectorAll('.main-content .top-content .text-content h4')[1].textContent = siteContent["main-content"]["about-h4"];
+document.querySelectorAll('.main-content .top-content .text-content p')[0].textContent = siteContent["main-content"]["features-content"];
+document.querySelectorAll('.main-content .top-content .text-content p')[1].textContent = siteContent["main-content"]["about-content"];
+
+document.querySelector("#middle-img").src = siteContent["main-content"]["middle-img-src"];
+
+const bottomContentDivs = document.querySelector(".bottom-content").children;
+const titles = ['services', 'product', 'vision'];
+for (let i = 0; i < bottomContentDivs.length; i++) {
+  bottomContentDivs[i].children[0].textContent = siteContent["main-content"][`${titles[i]}-h4`];
+  bottomContentDivs[i].children[1].textContent = siteContent["main-content"][`${titles[i]}-content`];
+}
+
+document.querySelector('.contact h4').textContent = siteContent["contact"]["contact-h4"];
+const contactPara = document.querySelectorAll('.contact p');
+contactPara[0].textContent = siteContent["contact"]["address"];
+contactPara[1].textContent = siteContent["contact"]["phone"];
+contactPara[2].textContent = siteContent["contact"]["email"];
+
+document.querySelector('footer p').textContent = siteContent["footer"]["copyright"];
+
+let nav = document.querySelector("nav");
+let preNav = document.createElement("a");
+preNav.href = "#";
+preNav.textContent = "Prelink";
+let postNav = document.createElement("a");
+postNav.href = "#";
+postNav.textContent = "Postlink";
+nav.prepend(preNav);
+nav.appendChild(postNav);
+
+for (let i = 0; i < nav.children.length; i++) {
+  nav.children[i].style.color = 'green';
+}
